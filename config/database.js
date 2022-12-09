@@ -9,3 +9,12 @@ const db = mongoose.connection;
 db.on('connected', function () {
   console.log(`Mongoose connected to: ${db.host}:${db.port}`);
 });
+
+
+
+
+
+
+
+// purpose of this is to create/connect to express server and mongoDB (the db server)
+// its used when its required in the server.js

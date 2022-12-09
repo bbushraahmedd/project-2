@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<div class="new-container">
+    <form id="new-form" action="/recipes" method="POST">
+        <label>Recipe Title:</label>
+        <br>
+            <input type="text" name="title">
+            <br>
+        <label>Ingredients:</label>
+        <br>
+            <input type="text" name="ingredient">
+            <br>
+        <label>Directions:</label>
+        <br>
+            <input type="text" name="direction">
+            <br>
+            <br>
+            <br>
+        <label>Serving Size:</label>
+        <br>
+            <input type="number" name="serving">
+            <br>
+        <label>Cook Time:</label>
+        <br>
+            <input type="text" name="cookTime">
+            <br>
+        <label>Prep Time:</label>
+        <br>
+            <input type="text" name="prepTime">
+        <br>
+        <button id='create' type="submit">Create Recipe</button>
+      </form>
+    </div>
+
+<%- include('../partials/footer') %>

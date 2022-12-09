@@ -12,6 +12,7 @@ passport.use(new GoogleStrategy({
     // a user has logged in via OAuth!
     // refer to the lesson plan from earlier today in order to set this up
     try{
+      // checking to see if user has logged in
     let user = await User.findOne({ googleId: profile.id});
     // if user document exists then pass the users information to the next middleware function
 		// if the user doens't exist user will be undefined
@@ -35,15 +36,19 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(userId).then(function(user){
-    done(null, user);
- })
+passport.deserializeUser(async function(id, done) {
+    try{
+      let userDoc = await User.findById(id);
+      done(null, userDoc);
+    } catch(err) {
+      done(err);
+    }
+ });
   // Find your User, using your model, and then call done(err, whateverYourUserIsCalled)
   // When you call this done function passport assigns the user document to req.user, which will 
   // be availible in every Single controller function, so you always know the logged in user
 
-});
+
 
 
 
