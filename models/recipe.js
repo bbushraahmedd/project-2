@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
+//this is implementing a 1:M, bc one recipe can have many comments
+const commentSchema = new Schema({
+    name: String,
+    content: String,
+}, {
+    timestamps: true
+});
+
 // the purpose of this schema is to shape the document in our recipes collection (database)
 const recipeSchema = new Schema({
     title: String,
@@ -9,7 +17,9 @@ const recipeSchema = new Schema({
     direction: String,
     serving: Number, 
     cookTime: String,
-    prepTime: String
+    prepTime: String,
+    comments: [commentSchema]
+
 });
 
 // this is my recipes collection (database) that can be looked at in mongoDB once i put something in it

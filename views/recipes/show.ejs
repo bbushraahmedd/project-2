@@ -27,6 +27,41 @@
             </div>
 </section>
 
+<br><br>
+<div class="comments">
+  <h3 id='comments'>LEAVE A COMMENT</h3>
+  <p>Loved the recipe? Leave a comment and share your thoughts!</p>
+    <form id="add-comment-form" method="POST" action="/recipes/<%= recipe._id %>/comments">
+      <label for='comments' id='comments'>NAME</label>
+      <input name="name">
+      <br>
+      <label for='comments' id='comments'>COMMENT</label>
+      <textarea name="content"></textarea>
+      <br>
+      <button id='comment' type="submit">POST COMMENT</button>  
+    </form>
+</div>
 
-
+<% if (recipe.comments.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+      <tbody>
+        <% recipe.comments.forEach(function(r) { %>
+            <tr>
+                <td><%= r.createdAt.toLocaleDateString() %></td>
+                <td><%= r.name %></td>
+                <td><%= r.content %></td>
+            </tr>
+           <% }); %>
+      </tbody>
+    </table>
+    <% } else { %>
+      <h5>No Comments Yet</h5>
+      <% } %>
 <%- include('../partials/footer') %>

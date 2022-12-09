@@ -58,7 +58,8 @@ function create(req, res){
 } //end of controller func
 
 function show(req, res){
-    Recipe.findById(req.params.id, function(err, recipe){
-        res.render('recipes/show', {title: 'Recipe Detail', recipe});
+    Recipe.findById(req.params.id, function(err, recipeDoc){
+        console.log(recipeDoc)
+        res.render('recipes/show', {title: 'Recipe Detail', recipe: recipeDoc});
     });
 }
