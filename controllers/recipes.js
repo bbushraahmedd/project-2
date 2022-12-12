@@ -8,7 +8,8 @@ module.exports = {
     create,
     show,
     homePage,
-    delete: deleteRecipe
+    editRecipe,
+    updateRecipe
 }
 
 // loads my homepage
@@ -66,20 +67,37 @@ function create(req, res){
 function show(req, res){
     Recipe.findById(req.params.id, function(err, recipeDoc){
         console.log(recipeDoc)
-        res.render('recipes/show', {title: 'Recipe Detail', recipe: recipeDoc});
+        res.render('recipes/show', {title: recipeDoc.title, recipe: recipeDoc});
     });
 }
 
-function deleteRecipe(req, res){
-
-    Recipe.findOne({'recipes._id': req.params.id, 'recipes.user': req.user.id}, function(err, recipeDoc){
-        if(!recipeDoc) return res.redirect('/recipes');
-
-        recipeDoc.recipes.remove(req.params.id);
-
-        recipeDoc.save(function(err){
-            if(err) return res.send('error, check terminal to fix');
-            res.redirect(`/recipes/${recipeDoc._id}`)
-        })
-    })
+function editRecipe(req, res){
+    Recipe.findById(req.params.id, function(err, recipeDoc){
+        console.log(recipeDoc)
+        res.render('recipes/edit', {title: 'Edit Recipe', recipe: recipeDoc});
+    });
 }
+
+// function updateRecipe(req, res){
+
+//     console.log('----------------------------------------------');
+//     console.log(req.body, '<<<<<--------updated form');
+//     console.log('----------------------------------------------'); 
+
+//     res.redirect(`/recipes/${req.params.id}`);
+// }
+
+function updateRecipe(req, res) {
+    Recipe.findOneAndUpdate(
+      {_id: req.params.id, userRecommending: req.user._id},
+      // update object with updated properties
+      req.body,
+      // options object with new: true to make sure updated doc is returned
+      {new: true},
+      function(err, recipe) {
+        if (err || !recipe) 
+        return res.send('error created, check terminal to fix');
+        res.redirect(`/recipes/${recipe._id}`);
+      }
+    );
+  }

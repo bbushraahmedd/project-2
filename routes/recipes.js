@@ -9,6 +9,8 @@ router.get('/new', isLoggedIn, recipeController.new);
 router.get('/all', recipeController.index)
 router.post('/', recipeController.create);
 router.get('/:id', recipeController.show);
+router.get('/:id/edit', recipeController.editRecipe);
+router.put('/:id', recipeController.updateRecipe);
 
 
 

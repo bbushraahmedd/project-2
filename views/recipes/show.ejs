@@ -26,8 +26,16 @@
 <br>
 <br>
 
-<!-- comments section -->
+<!-- edit button -->
+<% if (user) { %>
+<div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+    <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-outline-success btn-sm">Edit Recipe</a>
+</div>
+<% } else { %>
 
+    <% } %>
+
+<!-- comments section -->
 <div class="container pt-5">
     <div class="container">
         <% if (user) { %>
@@ -40,9 +48,9 @@
         <button class="btn rounded-2 btn-primary" type="submit">POST COMMENT</button>  
         </form>
         <% } else { %>
-
-            <span>You have to login in order to submit a</span>
-      
+            <div>
+                <span>Loved the recipe? Login and leave a comment below to let us know!</span>
+            </div>
             <% } %>
     </div>
 </div>
@@ -57,11 +65,13 @@
                         <div class="col-12">
                             <p>
                                 <strong> <%= c.userName %> </strong>
+                                <br>
                                 <%= c.content %>
                                 <br>
                                 <small class="fw-200"> <%= c.createdAt.toLocaleDateString() %></small>
                             </p>
                         </div>
+                        <!-- delete comment -->
                         <div>
                             <% if (user && user._id.equals(c.user)) { %>
                             <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">

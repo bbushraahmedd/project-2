@@ -1,44 +1,41 @@
 <%- include('../partials/header') %>
 
 <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">Create Your Recipe</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead">Share a little bit of Ammu's rhanna with people across the world.</p>
-    </div>
+    <h1 class="display-5 fw-bold">Edit Your Recipe</h1>
 </div>
 
 <div class="row justify-content-center">
     <div class="col-8">
-        <form id="new-form" action="/recipes" method="POST">
+        <form id="edit-form" action="/recipes/<%= recipe._id %>?_method=PUT " method="POST">
             <div class="row g-3">
                 <div class="col-12">
                     <label for="title" class="form-label">Recipe Title</label>
-                    <input type="text" name="title" id="title" class="form-control">
+                    <input type="text" name="title" id="title" class="form-control" value="<%= recipe.title %>">
                 </div>
                 <div class="col-12">
                     <label for="ingredient" class="form-label">Ingredients</label>
                     <br>
                     <small>Example: 2 tablespoons of ghee</small>
-                    <textarea name="ingredient" id="ingredient" class="form-control" cols="30" rows="4"></textarea>
+                    <textarea name="ingredient" id="ingredient" class="form-control" cols="30" rows="4"><%= recipe.ingredient %></textarea>
                 </div>
                 <div class="col-12">
                     <label for="direction" class="form-label">Directions</label>
-                    <textarea name="direction" id="direction" class="form-control" cols="30" rows="4"></textarea>
+                    <textarea name="direction" id="direction" class="form-control" cols="30" rows="4"><%= recipe.direction %></textarea>
                 </div>
                 <div class="col-12">
                     <label for="serving" class="form-label">Serving Size</label>
-                    <input type="text" name="serving" id="serving" class="form-control">
+                    <input type="text" name="serving" id="serving" class="form-control" value="<%= recipe.serving %>">
                 </div>
                 <div class="col-12">
                     <label for="cookTime" class="form-label">Cook Time</label>
-                    <input type="text" name="cookTime" id="cookTime" class="form-control">
+                    <input type="text" name="cookTime" id="cookTime" class="form-control" value="<%= recipe.cookTime %>">
                 </div>
                 <div class="col-12">
                     <label for="prepTime" class="form-label">Prep Time</label>
-                    <input type="text" name="prepTime" id="prepTime" class="form-control">
+                    <input type="text" name="prepTime" id="prepTime" class="form-control" value="<%= recipe.prepTime %>">
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Submit Recipe</button>
+                    <button type="submit" class="btn btn-success">Update Recipe</button>
                 </div>
             </div>
         </form>
