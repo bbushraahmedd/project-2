@@ -6,11 +6,17 @@ module.exports = {
     index,
     new: newRecipe,
     create,
-    show
+    show,
+    homePage,
+    delete: deleteRecipe
 }
 
+// loads my homepage
+function homePage (req, res){
+    res.render('index');
+}
 
-// recipe index func (loads my homepage)
+//loads all recipes page
 function index (req, res){
         //telling model to get allll recipes from Recipe db
     Recipe.find({}, function(err, recipeDocs) {
@@ -62,4 +68,18 @@ function show(req, res){
         console.log(recipeDoc)
         res.render('recipes/show', {title: 'Recipe Detail', recipe: recipeDoc});
     });
+}
+
+function deleteRecipe(req, res){
+
+    Recipe.findOne({'recipes._id': req.params.id, 'recipes.user': req.user.id}, function(err, recipeDoc){
+        if(!recipeDoc) return res.redirect('/recipes');
+
+        recipeDoc.recipes.remove(req.params.id);
+
+        recipeDoc.save(function(err){
+            if(err) return res.send('error, check terminal to fix');
+            res.redirect(`/recipes/${recipeDoc._id}`)
+        })
+    })
 }

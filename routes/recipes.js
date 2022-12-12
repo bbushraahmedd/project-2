@@ -4,11 +4,12 @@ const recipeController = require('../controllers/recipes')
 const isLoggedIn = require('../config/auth');
 const recipe = require('../models/recipe');
 
-
+router.get('/', recipeController.homePage);
 router.get('/new', isLoggedIn, recipeController.new);
-router.get('/', recipeController.index)
+router.get('/all', recipeController.index)
 router.post('/', recipeController.create);
 router.get('/:id', recipeController.show);
+
 
 
 

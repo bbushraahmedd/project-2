@@ -4,9 +4,11 @@ const Schema = mongoose.Schema;
 
 //this is implementing a 1:M, bc one recipe can have many comments
 const commentSchema = new Schema({
-    name: String,
     content: String,
-}, {
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    userName: String,
+},  
+    {
     timestamps: true
 });
 

@@ -1,12 +1,22 @@
 <%- include('../partials/header') %>
 
-    <div id="blurb">
-      <h1> Recipes </h1>
-      <p class="'blurb">I grew up in the kitchen along side my mom and conversations in my family are always about the next meal. I picked up their love for food along the way, and with this site,
-       I share my food story with you.
-      </p>
-    </div>
-    <table id="full">
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">All Recipes</h1>
+  <div class="col-lg-6 mx-auto">
+      <p class="lead">I grew up in the kitchen alongside my Ammu and conversations in my family are always about the next meal. I picked up their love for food along the way, and with this site,
+        I share my food story with you.</p>
+  </div>
+</div>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <% recipes.forEach(function(r) { %>
+      <div class="pt-1 fw-bold"><%= r.title %></div>
+      <a class="col text-center category__link link-dark" href="/recipes/<%= r._id %>">Full Recipe</a>
+  <% }); %>
+  
+</div>
+
+    <!-- <table id="full">
       <tbody>
         <% recipes.forEach(function(r) { %>
           <tr>
@@ -15,5 +25,5 @@
           </tr>
         <% }); %>
       </tbody>
-    </table>
+    </table> -->
 <%- include('../partials/footer') %>

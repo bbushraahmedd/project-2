@@ -1,35 +1,48 @@
 <%- include('../partials/header') %>
 
-<div class="new-container">
-    <form id="new-form" action="/recipes" method="POST">
-        <label>Recipe Title:</label>
-        <br>
-            <input type="text" name="title">
-            <br>
-        <label>Ingredients:</label>
-        <br>
-            <input type="text" name="ingredient">
-            <br>
-        <label>Directions:</label>
-        <br>
-            <input type="text" name="direction">
-            <br>
-            <br>
-            <br>
-        <label>Serving Size:</label>
-        <br>
-            <input type="number" name="serving">
-            <br>
-        <label>Cook Time:</label>
-        <br>
-            <input type="text" name="cookTime">
-            <br>
-        <label>Prep Time:</label>
-        <br>
-            <input type="text" name="prepTime">
-        <br>
-        <button id='create' type="submit">Create Recipe</button>
-      </form>
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Create Your Recipe</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead">Share a little bit of Ammu's rhanna with people across the world.</p>
     </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form id="new-form" action="/recipes" method="POST">
+            <div class="row g-3">
+                <div class="col-12">
+                    <label for="title" class="form-label">Recipe Title</label>
+                    <input type="text" name="title" id="title" class="form-control">
+                </div>
+                <div class="col-12">
+                    <label for="ingredient" class="form-label">Ingredients</label>
+                    <br>
+                    <small>Example: Ghee</small>
+                    <textarea name="ingredient" id="ingredient" class="form-control" cols="30" rows="4"></textarea>
+                </div>
+                <div class="col-12">
+                    <label for="direction" class="form-label">Directions</label>
+                    <textarea name="direction" id="direction" class="form-control" cols="30" rows="4"></textarea>
+                </div>
+                <div class="col-12">
+                    <label for="serving" class="form-label">Serving Size</label>
+                    <input type="text" name="serving" id="serving" class="form-control">
+                </div>
+                <div class="col-12">
+                    <label for="cookTime" class="form-label">Cook Time</label>
+                    <input type="text" name="cookTime" id="cookTime" class="form-control">
+                </div>
+                <div class="col-12">
+                    <label for="prepTime" class="form-label">Prep Time</label>
+                    <input type="text" name="prepTime" id="prepTime" class="form-control">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit Recipe</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

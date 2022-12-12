@@ -1,8 +1,29 @@
 <%- include('./partials/header') %>
 
-    <h1>Home Page</h1>
-    <a href="/recipes/new">Create A New Recipe</a>
-    <a href="/recipes">All Recipes</a>
 
+<div class="container-xxl px-md-5 bg-white shadow-lg">
+    <div class="row flex-lg-row-reverse align-items-center g-4 py-2 mb-4">
+        <div class="col-12 col-lg-6">
+            <img src="https://i.imgur.com/dZzXWFQ.jpeg" width="307" height="210" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="tikka masala">
+        </div>
+        <div class="col-12 col-lg-6">
+            <h1 class="display-5 fw-bold mb-3">Preserving Ammu's rhanna.</h1>
+            <p class="lead">
+            Feeble attempt at capturing and preserving the essence of what home was like. 
+            </p>
+        </div>
+    </div>
+
+
+    <section class="px-4 py-5 my-5 text-center">
+        <h3 class="display-5 fw-600"> Publish your own recipe for FREE</h3>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Publish your recipe for everyone to enjoy.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="/recipes/new" class="btn btn-primary btn-dark btn-lg">Publish Recipe</a>
+            </div>
+        </div>
+    </section>
+</div>
 
     <%- include('./partials/footer') %>
