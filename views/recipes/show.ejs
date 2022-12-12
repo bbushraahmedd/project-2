@@ -30,6 +30,7 @@
 
 <div class="container pt-5">
     <div class="container">
+        <% if (user) { %>
         <form id="add-comment-form" method="POST" action="/recipes/<%= recipe._id %>/comments">
         <label for='comments' id='comments'>COMMENT</label>
         <div class="form-group pt-2">
@@ -38,35 +39,45 @@
         <br>
         <button class="btn rounded-2 btn-primary" type="submit">POST COMMENT</button>  
         </form>
+        <% } else { %>
+
+            <span>You have to login in order to submit a</span>
+      
+            <% } %>
     </div>
 </div>
 
-<% if (recipe.comments.length) { %>
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Comment</th>
-            </tr>
-        </thead>
-      <tbody>
-        <% recipe.comments.forEach(function(r) { %>
-            <tr>
-                <td><%= r.createdAt.toLocaleDateString() %></td>
-                <td><%= r.name %></td>
-                <td><%= r.content %></td>
-                <td>
-                    <% if (user && user._id.equals(r.user)) { %>
-                        <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST">
-                        <button type="submit">X</button>
-                        </form>
+<!-- display comment -->
+<div class="container pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <% if (recipe.comments.length) { %>
+                    <% recipe.comments.forEach(function(c) { %>
+                        <div class="col-12">
+                            <p>
+                                <strong> <%= c.userName %> </strong>
+                                <%= c.content %>
+                                <br>
+                                <small class="fw-200"> <%= c.createdAt.toLocaleDateString() %></small>
+                            </p>
+                        </div>
+                        <div>
+                            <% if (user && user._id.equals(c.user)) { %>
+                            <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                            <button class="btn rounded-2 btn-outline-danger btn-sm" type="submit">DELETE</button>
+                            </form>
+                        </div>
+                            <% } %>
+                        <% }); %>
+                    <% } else { %>
+                        <h5>No Comments Yet</h5>
                     <% } %>
-                </td>
-            </tr>
-           <% }); %>
-      </tbody>
-    </table>
-    <% } else { %>
-      <h5>No Comments Yet</h5>
-      <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <%- include('../partials/footer') %>

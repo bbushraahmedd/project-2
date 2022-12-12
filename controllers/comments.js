@@ -15,8 +15,10 @@ function create (req, res){
         }
             console.log(recipeDoc);
             //adding user to comment
+            console.log(req.user , '<------- req.user');
             req.body.user = req.user._id;
             req.body.userName = req.user.name;
+            console.log(req.body, 'req.body---------------');
 
             recipeDoc.comments.push(req.body);
             recipeDoc.save(function(err){
@@ -28,7 +30,9 @@ function create (req, res){
 
 function deleteComment(req, res){
 
-    Recipe.findOne({'recipes._id': req.params.id, 'recipes.user': req.user.id}, function(err, recipeDoc){
+    //finding recipe with comment
+    Recipe.findOne({'comments._id': req.params.id, 'comments.user': req.user._id}, 
+        function(err, recipeDoc){
         if(!recipeDoc) return res.redirect('/recipes');
 
         recipeDoc.comments.remove(req.params.id);
@@ -39,3 +43,4 @@ function deleteComment(req, res){
         })
     })
 }
+
