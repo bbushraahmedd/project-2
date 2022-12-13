@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
+const MongoStore = require('connect-mongo');
+
 const indexRoutes = require('./routes/index');
 const recipesRouter = require('./routes/recipes');
 const commentsRouter = require('./routes/comments');
@@ -34,11 +36,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 // mount the session middleware
+// rest of code then update the middleware
+// setting up our session to use the Mongostore
 app.use(session({
+  store: MongoStore.create({
+    mongoUrl: process.env.DATABASE_URL
+  }),
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
