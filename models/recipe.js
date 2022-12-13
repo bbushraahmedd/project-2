@@ -20,6 +20,7 @@ const recipeSchema = new Schema({
     serving: Number, 
     cookTime: String,
     prepTime: String,
+    image: String,
     comments: [commentSchema]
 
 });

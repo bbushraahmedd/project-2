@@ -9,7 +9,7 @@ module.exports = {
     show,
     homePage,
     editRecipe,
-    updateRecipe
+    updateRecipe,
 }
 
 // loads my homepage
@@ -77,15 +77,6 @@ function editRecipe(req, res){
         res.render('recipes/edit', {title: 'Edit Recipe', recipe: recipeDoc});
     });
 }
-
-// function updateRecipe(req, res){
-
-//     console.log('----------------------------------------------');
-//     console.log(req.body, '<<<<<--------updated form');
-//     console.log('----------------------------------------------'); 
-
-//     res.redirect(`/recipes/${req.params.id}`);
-// }
 
 function updateRecipe(req, res) {
     Recipe.findOneAndUpdate(

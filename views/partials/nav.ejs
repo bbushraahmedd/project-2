@@ -7,14 +7,18 @@
   <ul class="nav col-12 col-md-auto mb-2 text-end mb-md-0">
     <li><a href="/recipes" class="nav-link px-2 link-secondary">Home</a></li>
     <li><a href="/recipes/all" class="nav-link px-2 link-dark">Recipes</a></li>
+    <li><% if (user) { %>
+      <a class="nav-link px-2 link-dark" href="/recipes/new">Create Recipe</a>
+      <% } else { %>
+        
+      <% } %></li>
   </ul>
 
   <div class="col-md-3 text-end">
     <% if (user) { %>
-      <a class="px-2 link-dark text-decoration-none" href="/recipes/new">Create Recipe</a>
-      <a class="btn btn-light me-2" href="/logout" role="button">Log Out</a>
+      <a class="btn btn-light me-3" href="/logout" role="button">Log Out</a>
       <% } else { %>
-        <a class="btn btn-outline-primary me-2" href="/auth/google" role="button">Log In&nbsp;</a>
+        <a class="btn btn-outline-dark me-3" href="/auth/google" role="button">Log In&nbsp;</a>
       <% } %>
   </div>
 </header>
