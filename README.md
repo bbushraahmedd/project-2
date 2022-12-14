@@ -32,8 +32,8 @@ If you are worried you made a mistake or uploaded the wrong picture while creati
 - MongoDB/Mongoose
 
 ## Getting started
-[Trello board](https://trello.com/b/0vcs9uSO/family-cookbook-user-stories-ga-sei-1031-project-2)
-[ERD Diagram](https://docs.google.com/spreadsheets/d/1fw4pEVzdHAnl_LD3muKKFKYQWpC8z8fFbAioOwnlyfM/edit?usp=sharing)
+- [Trello board](https://trello.com/b/0vcs9uSO/family-cookbook-user-stories-ga-sei-1031-project-2)
+- [ERD Diagram](https://docs.google.com/spreadsheets/d/1fw4pEVzdHAnl_LD3muKKFKYQWpC8z8fFbAioOwnlyfM/edit?usp=sharing)
 #### Wireframe
 <img width="1512" alt="Screen Shot 2022-12-13 at 10 28 04 PM" src="https://user-images.githubusercontent.com/116580659/207506325-cc1b4c3d-05b5-476d-9608-e5c4c187e6c7.png">
 
