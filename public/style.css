@@ -1,7 +1,8 @@
 
 
 * {
- font-family: 'Rubik';
+ font-family: 'Noticia Text';
+ color: #544730;
 }
 
 .category__link{
@@ -13,4 +14,16 @@
 
 .category__link:hover {
   transform: scale(1.1);
+}
+
+.nav-link {
+  color: #544730;
+}
+
+header {
+  font-size:larger;
+}
+
+#all-recipes-div, #create, #edit {
+  background-color: #F3EADB;
 }

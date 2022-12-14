@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<div class="px-4 py-5 my-5 text-center">
+<div id="edit" class="px-4 py-5 my-5 text-center">
     <h1 class="display-5 fw-bold">Edit Your Recipe</h1>
 </div>
 
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-12">
                     <label for="image" class="form-label">Insert Image URL</label>
-                    <input type="url" name="image" id="image" class="form-control" accept="image/*">
+                    <input type="url" name="image" id="image" class="form-control" value="<%= recipe.image %>" accept="image/*">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-success">Update Recipe</button>
